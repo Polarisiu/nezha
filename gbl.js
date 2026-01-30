@@ -1,67 +1,50 @@
+<script>
 (function () {
-  if (document.getElementById("nav-glass-style")) return;
+  /* ====== 配置 ====== */
+  const SITE_START_TIME = new Date("2024-01-01T00:00:00"); // ← 改成你的建站时间
+  const VISITOR_KEY = "bm_site_visits";
 
-  const style = document.createElement("style");
-  style.id = "nav-glass-style";
-  style.type = "text/css";
-  style.textContent = `
-a.flex.items-center.gap-1.text-sm.font-medium.opacity-50 {
-  background-color: rgba(255, 255, 255, 0.01) !important;
-  backdrop-filter: blur(5px) saturate(100%);
-  -webkit-backdrop-filter: blur(5px) saturate(100%);
-  border-radius: 9999px !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  padding: 6px 12px !important;
-  margin-left: 0.5rem !important;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  box-shadow: none !important;
-  opacity: 1 !important;
-  color: #6c757d !important; 
-}
+  const quotes = [
+    "真正的强大，是温柔而坚定。",
+    "Talk is cheap. Show me the code. — Linus Torvalds",
+    "Stay hungry, stay foolish. — Steve Jobs",
+    "简单，是终极的复杂。",
+    "不要等待机会，而要创造机会。"
+  ];
 
-/* 暗色模式 */
-.dark a.flex.items-center.gap-1.text-sm.font-medium.opacity-50 {
-  background-color: rgba(30, 30, 30, 0.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #adb5bd !important;
-}
+  /* ====== 访客统计（前端） ====== */
+  let visits = parseInt(localStorage.getItem(VISITOR_KEY) || "0", 10);
+  visits++;
+  localStorage.setItem(VISITOR_KEY, visits);
 
-/* 悬停（浅色） */
-a.flex.items-center.gap-1.text-sm.font-medium.opacity-50:hover {
-  color: #000000 !important;
-}
+  /* ====== 运行时长 ====== */
+  function getUptime() {
+    let diff = Math.floor((Date.now() - SITE_START_TIME.getTime()) / 1000);
+    const days = Math.floor(diff / 86400);
+    diff %= 86400;
+    const hours = Math.floor(diff / 3600);
+    diff %= 3600;
+    const minutes = Math.floor(diff / 60);
+    return `${days} 天 ${hours} 小时 ${minutes} 分`;
+  }
 
-/* 悬停（暗色） */
-.dark a.flex.items-center.gap-1.text-sm.font-medium.opacity-50:hover {
-  color: #FFFFFF !important;
-}
+  const el = document.getElementById("bm-status");
+  if (!el) return;
 
-/* 高光划过 */
-a.flex.items-center.gap-1.text-sm.font-medium.opacity-50::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 100%;
-  height: 100%;
-  transform: skewX(-30deg);
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 45%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.1) 55%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
+  let quoteIndex = 0;
 
-/* hover 触发高光 */
-a.flex.items-center.gap-1.text-sm.font-medium.opacity-50:hover::after {
-  left: 150%;
-}
-`;
-  document.head.appendChild(style);
+  function render() {
+    el.innerHTML = `
+      ⏱ 运行：<strong>${getUptime()}</strong>
+      &nbsp;｜&nbsp;
+      👥 访问：<strong>${visits}</strong>
+      &nbsp;｜&nbsp;
+      💬 ${quotes[quoteIndex % quotes.length]}
+    `;
+    quoteIndex++;
+  }
+
+  render();
+  setInterval(render, 15000); // 15 秒换一句名言
 })();
+</script>
