@@ -1,0 +1,184 @@
+<script>
+    window.CustomBackgroundImage = 'https://cdn.nodeimage.com/i/P5Vkaab26o7hFAj0B8HTH7hjwm9kcxav.webp';
+    window.CustomMobileBackgroundImage = 'https://t.alcy.cc/mp';
+    window.CustomLogo = 'https://cdn.nodeimage.com/i/ohcG05Hqlge38FWjyOGQ9KXZBSe4v3ix.webp';
+    window.CustomDesc = '📷已模糊的镜头,拉不会回那从前';
+    window.ShowNetTransfer = false;
+    window.ForceTheme = "dark";
+    window.DisableAnimatedMan = true;
+    window.ForceUseSvgFlag = false;
+    window.CustomLinks = '[{\"link\":\"https://kuma-mieru-wine.vercel.app/\",\"name\":\"kuma-mieru\"}]';
+</script>
+<!-- 设置网络显示-->
+<script src="https://cdn.jsdelivr.net/gh/Polarisiu/nezha/wlzs.js"></script>
+
+<style>
+
+a.flex.items-center.gap-1.text-sm.font-medium.opacity-50 {
+
+  background-color: rgba(255, 255, 255, 0.01) !important;
+  backdrop-filter: blur(5px) saturate(100%);
+  -webkit-backdrop-filter: blur(5px) saturate(100%);
+  border-radius: 9999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 6px 12px !important;
+  margin-left: 0.5rem !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none !important;
+  opacity: 1 !important;
+
+  color: #6c757d !important; 
+}
+
+/*
+ * 2. 暗色模式下的样式 (默认状态)
+ */
+.dark a.flex.items-center.gap-1.text-sm.font-medium.opacity-50 {
+  background-color: rgba(30, 30, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+
+  color: #adb5bd !important;
+}
+
+/*
+ * 3. 悬停效果 (浅色模式)
+ */
+a.flex.items-center.gap-1.text-sm.font-medium.opacity-50:hover {
+
+  color: #000000 !important;
+}
+
+/*
+ * 4. 悬停效果 (暗色模式)
+ */
+.dark a.flex.items-center.gap-1.text-sm.font-medium.opacity-50:hover {
+
+  color: #FFFFFF !important;
+}
+
+/*
+ * 5. 动态高光效果 (保持不变)
+ */
+a.flex.items-center.gap-1.text-sm.font-medium.opacity-50::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  transform: skewX(-30deg);
+  background-image: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0) 100% );
+  transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 鼠标悬停时触发高光划过 (保持不变) */
+a.flex.items-center.gap-1.text-sm.font-medium.opacity-50:hover::after {
+  left: 150%;
+}
+
+</style>
+
+
+<!-- 引入流量统计-->
+<script>
+  window.TrafficScriptConfig = {
+    showTrafficStats: true,    // 显示流量统计
+    insertAfter: true,         // 如果开启总流量卡片, 放置在总流量卡片后面
+    interval: 60000,           // 60秒刷新缓存, 单位毫秒
+    toggleInterval: 4000,      // 4秒切换流量进度条右上角内容, 0秒不切换, 单位毫秒
+    duration: 500,             // 缓进缓出切换时间, 单位毫秒
+    enableLog: false           // 开启日志
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/gh/ziwiwiz/nezha-ui@main/traffic-progress.js"></script>
+
+
+<script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css';
+    document.head.appendChild(link);
+</script>
+<!-- 设置页面字体 -->
+<style>
+    * {
+        font-family: 'LXGW WenKai Screen'; 
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'LXGW WenKai Screen', sans-serif; 
+    }
+</style>
+<style>
+    
+    /* 隐藏页脚 */
+    footer, .site-footer { display: none !important; }
+
+    /*模块统使用 iOS风格滑动璃效果*/
+
+    /* 目标：所���卡片 + ���上��������线按钮 + 过滤条 */
+    [class*="bg-card"],
+    button[class*="rounded-full"],
+    .ios-glass-filter-bar,
+    .bottom-marquee { 
+      background-color: rgba(255, 255, 255, 0.01) !important;
+      backdrop-filter: blur(5px) saturate(100%);
+      -webkit-backdrop-filter: blur(5px) saturate(100%);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark [class*="bg-card"],
+    .dark button[class*="rounded-full"],
+    .dark .ios-glass-filter-bar,
+    .dark .bottom-marquee { 
+      background-color: rgba(30, 30, 30, 0.2) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+
+    
+    /* 过滤条内部选中按钮的背景修复 */
+    .light .ios-glass-filter-bar div[class*="bg-white"] { background-color: rgba(255, 255, 255, 0.5) !important; }
+    .dark .ios-glass-filter-bar div[class*="bg-neutral-"] { background-color: rgba(255, 255, 255, 0.2) !important; }
+
+/* 动态高光效果 */
+    [class*="bg-card"]::after,
+    button[class*="rounded-full"]::after,
+    .ios-glass-filter-bar::after,
+    .bottom-marquee::after { 
+      content: ''; position: absolute; top: 0; left: -150%;
+      width: 100%; height: 100%; transform: skewX(-30deg);
+      background-image: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0) 100% );
+      transition: left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    /* 鼠标悬停时，让高光层从左到右划过 */
+    [class*="bg-card"]:hover::after,
+    button[class*="rounded-full"]:hover::after,
+    .ios-glass-filter-bar:hover::after,
+    .bottom-marquee:hover::after { 
+      left: 150%;
+    }
+
+    /* 大号时间样式 */
+    p.text-base.font-semibold, p.text-sm.font-medium.opacity-50 { display: none !important; }
+    .flex.text-sm.font-medium.mt-0\.5 {
+        font-size: 3.0rem !important; font-weight: bold; opacity: 0.8 !important;
+        justify-content: center !important; align-items: baseline !important;
+        color: white !important;
+    }
+    .number__inner { display: inline-block !important; width: 2ch !important; text-align: center !important; }
+    .number-flow-react svg { height: 2.5rem !important; vertical-align: middle !important; }
+
+    /* 隐藏各种按钮 */
+    [id="radix-:r0:"], [id="radix-:r2:"],
+    button:has(.lucide-image-minus),
+    button.rounded-\[50px\][aria-haspopup="dialog"],
+    .server-overview-controls section.flex.items-center.gap-2.w-full.overflow-hidden button:nth-child(-n+3) {
+        display: none !important;
+    }
+</style>
